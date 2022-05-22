@@ -1,6 +1,7 @@
 def solve_grid(grid):
     editable_grid = grid.copy()
 
+"""
     count num_of_singles
     while num_of_singles > 0:
         add singles to the editable_grid
@@ -23,5 +24,5 @@ def solve_grid(grid):
 
         delete candidate from editable_grid
 
-    return ['status': 'impossible']
-    
+    return ['status': 'impossible'] 
+"""
