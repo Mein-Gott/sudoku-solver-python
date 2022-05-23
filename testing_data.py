@@ -68,4 +68,24 @@ __complete_grid = [
     ['345286179']
 ]
 complete_grid = add_commas_between(__complete_grid)
-print(complete_grid)
+
+
+group_candidates = [
+    [1,2,3,4],
+    [1,2,3,4],
+    [1,2,3,4],
+    [1,2,3,4]
+]
+group_values = [1,3,0,0]
+group_candidates_eliminated = [
+    [2,4],
+    [2,4],
+    [2,4],
+    [2,4]
+]
+group_candidates_no_four = [
+    [1,2,3],
+    [1,2,3],
+    [1,2,3],
+    [1,2,3]
+]

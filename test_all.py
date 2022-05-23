@@ -22,5 +22,14 @@ class ParseToList(unittest.TestCase):
         commas_with_function = add_commas_between(without_commas)
         self.assertEqual(commas_with_function, with_commas)
 
+class CandidatesPerCell(unittest.TestCase):
+    def test_eliminate_value_from_group_candidates(self):
+        no_fours = eliminate_value_from_group_candidates(group_candidates, 4)
+        self.assertEqual(no_fours, group_candidates_no_four)
+
+    def test_eliminate_whole_group(self):
+        desired_candidates = eliminate_candidates_group(group_candidates, group_values)
+        self.assertEqual(desired_candidates, group_candidates_eliminated)
+
 if __name__ == '__main__':
     unittest.main()

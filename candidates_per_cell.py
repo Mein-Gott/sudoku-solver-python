@@ -2,6 +2,7 @@ from split_into_groups import split_into_groups
 
 def candidates_per_cell(grid):
     candidates = __generate_default_candidates()
+    candidates = delete_candidates_from_givens(candidates, grid)
 
     groupsets = split_into_groups(grid)
     candidates_in_groupsets = split_into_groups(candidates)
@@ -9,16 +10,35 @@ def candidates_per_cell(grid):
     for (groupset, groupset_candidates) in zip(groupsets, candidates_in_groupsets):
         candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset)
 
+    return candidates
+
+
+def delete_candidates_from_givens(candidates, grid):
+    edited_candidates = candidates.copy()
+    for candidate_row, row in zip(candidates, grid):
+        edited_candidates = delete_candidates_from_givens_row(candidate_row, row)
+
+    return edited_candidates
+
+def delete_candidates_from_givens_row(candidate_row, row):
+    edited_candidate_row = candidate_row.copy()
+
+    for cell_candidates, cell in zip(edited_candidate_row, row):
+        if cell == 0: 
+            cell_candidates = []
+
+    return edited_candidate_row
+
 
 def eliminate_candidates_checking_groupset(groupset_candidates, groupset):
     edited_groupset_candidates = groupset_candidates.copy()
 
     for group_index, group in enumerate(groupset):
-        edited_groupset_candidates = eliminate_group_candidates(groupset_candidates[group_index], group)
+        edited_groupset_candidates = eliminate_candidates_group(groupset_candidates[group_index], group)
 
     return edited_groupset_candidates
 
-def eliminate_group_candidates(group_candidates, group):
+def eliminate_candidates_group(group_candidates, group):
     edited_group_candidates = group_candidates.copy()
 
     for cell in group:
