@@ -4,6 +4,7 @@ from testing_data import *
 from split_into_groups import *
 from parse_to_list import *
 from candidates_per_cell import *
+from coordinates_of_singles import *
 
 
 class SplitIntoGroups(unittest.TestCase):
@@ -29,26 +30,36 @@ class CandidatesPerCell(unittest.TestCase):
         self.assertEqual(no_fours, group_candidates_no_four)
 
     def test_eliminate_whole_group(self):
-        desired_candidates = eliminate_candidates_group(group_candidates, group_values)
-        self.assertEqual(desired_candidates, group_candidates_eliminated)
+        generated_candidates = eliminate_candidates_group(group_candidates, group_values)
+        self.assertEqual(generated_candidates, group_candidates_eliminated)
 
     def test_eliminate_groupset(self):
-        desired_candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset_clues)
-        self.assertEqual(desired_candidates, eliminated_groupset_candidates)
+        generated_candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset_clues)
+        self.assertEqual(generated_candidates, eliminated_groupset_candidates)
 
     def test_delete_candidates_from_clue_cell_row(self):
-        desired_candidates = delete_candidates_from_clue_cell_row(groupset_candidates[0], groupset_clues[0])
-        self.assertEqual(desired_candidates, no_candidates_for_clue_cells[0])
+        generated_candidates = delete_candidates_from_clue_cell_row(groupset_candidates[0], groupset_clues[0])
+        self.assertEqual(generated_candidates, no_candidates_for_clue_cells[0])
 
     def test_delete_candidates_from_clue_cells(self):
-        desired_candidates = delete_candidates_from_clue_cells(groupset_candidates, groupset_clues)
-        self.assertEqual(desired_candidates, no_candidates_for_clue_cells)
+        generated_candidates = delete_candidates_from_clue_cells(groupset_candidates, groupset_clues)
+        self.assertEqual(generated_candidates, no_candidates_for_clue_cells)
 
     def test_candidates_per_cell(self):
-        desired_candidates = candidates_per_cell(incomplete_grid)
-        for desired_row_candidates, correct_row_candidates in zip(desired_candidates, incomplete_grid_candidates):
-            for desired_cell_candidates, correct_cell_candidates in zip(desired_row_candidates, correct_row_candidates):
-                self.assertTrue(Counter(desired_cell_candidates) == Counter(correct_cell_candidates))
+        generated_candidates = candidates_per_cell(incomplete_grid)
+        for generated_row_candidates, correct_row_candidates in zip(generated_candidates, incomplete_grid_candidates):
+            for generated_cell_candidates, correct_cell_candidates in zip(generated_row_candidates, correct_row_candidates):
+                self.assertTrue(Counter(generated_cell_candidates) == Counter(correct_cell_candidates))
+
+class CoordinatesOfSingles(unittest.TestCase):
+    def test_coordinates_of_singles(self):
+        generated_single_coords = coordinates_of_singles(incomplete_grid_candidates)
+        for generated_coords, correct_coords in zip(generated_single_coords, incomplete_grid_single_coords):
+            self.assertEqual(generated_coords, correct_coords)
+
+    def test_number_of_coords(self):
+        generated_single_coords = coordinates_of_singles(incomplete_grid_candidates)
+        self.assertEqual(len(generated_single_coords), 4)
 
 if __name__ == '__main__':
     unittest.main()
