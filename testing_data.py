@@ -164,10 +164,10 @@ incomplete_grid_candidates = [
 ]
 
 incomplete_grid_single_coords = [
-    {'row': 4, 'column': 4},
-    {'row': 6, 'column': 5},
-    {'row': 6, 'column': 8},
-    {'row': 7, 'column': 7}
+    {'row': 4, 'column': 4, 'value': 5},
+    {'row': 6, 'column': 5, 'value': 7},
+    {'row': 6, 'column': 8, 'value': 4},
+    {'row': 7, 'column': 7, 'value': 3}
 ]
 
 __complete_grid = [

@@ -1,7 +1,10 @@
 from copy import deepcopy 
+from add_singles import add_singles
  
 def solve_grid(grid):
     editable_grid = deepcopy(grid)
+
+    editable_grid = add_singles(grid)
 
 """
     count num_of_singles

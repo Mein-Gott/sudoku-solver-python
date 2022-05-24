@@ -5,6 +5,7 @@ from split_into_groups import *
 from parse_to_list import *
 from candidates_per_cell import *
 from coordinates_of_singles import *
+from add_singles import add_singles
 
 
 class SplitIntoGroups(unittest.TestCase):
@@ -60,6 +61,12 @@ class CoordinatesOfSingles(unittest.TestCase):
     def test_number_of_coords(self):
         generated_single_coords = coordinates_of_singles(incomplete_grid_candidates)
         self.assertEqual(len(generated_single_coords), 4)
+
+class AddSingles(unittest.TestCase):
+    def test_add_singles(self):
+        generated_grid = add_singles(incomplete_grid)
+        self.assertEqual(generated_grid, complete_grid)
+
 
 if __name__ == '__main__':
     unittest.main()
