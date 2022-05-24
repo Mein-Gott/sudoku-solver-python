@@ -31,5 +31,17 @@ class CandidatesPerCell(unittest.TestCase):
         desired_candidates = eliminate_candidates_group(group_candidates, group_values)
         self.assertEqual(desired_candidates, group_candidates_eliminated)
 
+    def test_eliminate_groupset(self):
+        desired_candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset_clues)
+        self.assertEqual(desired_candidates, eliminated_groupset_candidates)
+
+    def test_delete_candidates_from_clue_cell_row(self):
+        desired_candidates = delete_candidates_from_clue_cell_row(groupset_candidates[0], groupset_clues[0])
+        self.assertEqual(desired_candidates, no_candidates_for_clue_cells[0])
+
+    def test_delete_candidates_from_clue_cells(self):
+        desired_candidates = delete_candidates_from_clue_cells(groupset_candidates, groupset_clues)
+        self.assertEqual(desired_candidates, no_candidates_for_clue_cells)
+
 if __name__ == '__main__':
     unittest.main()
