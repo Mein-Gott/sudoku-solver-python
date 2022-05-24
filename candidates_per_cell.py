@@ -1,15 +1,22 @@
-from split_into_groups import split_into_groups
+from split_into_groups import *
 from copy import deepcopy
 
 def candidates_per_cell(grid):
-    candidates = generate_default_candidates()
+    candidates = __generate_default_candidates()
     candidates = delete_candidates_from_clue_cells(candidates, grid)
 
-    groupsets = split_into_groups(grid)
-    candidates_in_groupsets = split_into_groups(candidates)
 
-    for (groupset, groupset_candidates) in zip(groupsets, candidates_in_groupsets):
-        candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset)
+    candidates = eliminate_candidates_checking_groupset(candidates, grid)
+
+    candidates_in_columns = split_into_columns(candidates)
+    grid_in_columns = split_into_columns(grid)
+    eliminated_candidates_in_columns = eliminate_candidates_checking_groupset(candidates_in_columns, grid_in_columns)
+    candidates = split_into_columns(eliminated_candidates_in_columns)
+
+    candidates_in_regions = split_into_regions(candidates)
+    grid_in_regions = split_into_regions(grid)
+    eliminated_candidates_in_regions = eliminate_candidates_checking_groupset(candidates_in_regions, grid_in_regions)
+    candidates = split_into_regions(eliminated_candidates_in_regions)
 
     return candidates
 
@@ -59,7 +66,7 @@ def eliminate_value_from_group_candidates(group_candidates, value):
 
 
 
-def generate_default_candidates():
+def __generate_default_candidates():
     default_candidates = []
     for i in range(9):
         default_candidates.append(__generate_default_row_candidates())

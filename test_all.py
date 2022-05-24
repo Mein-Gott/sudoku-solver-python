@@ -1,3 +1,4 @@
+from typing import Counter
 import unittest
 from testing_data import *
 from split_into_groups import *
@@ -42,6 +43,12 @@ class CandidatesPerCell(unittest.TestCase):
     def test_delete_candidates_from_clue_cells(self):
         desired_candidates = delete_candidates_from_clue_cells(groupset_candidates, groupset_clues)
         self.assertEqual(desired_candidates, no_candidates_for_clue_cells)
+
+    def test_candidates_per_cell(self):
+        desired_candidates = candidates_per_cell(incomplete_grid)
+        for desired_row_candidates, correct_row_candidates in zip(desired_candidates, incomplete_grid_candidates):
+            for desired_cell_candidates, correct_cell_candidates in zip(desired_row_candidates, correct_row_candidates):
+                self.assertTrue(Counter(desired_cell_candidates) == Counter(correct_cell_candidates))
 
 if __name__ == '__main__':
     unittest.main()
