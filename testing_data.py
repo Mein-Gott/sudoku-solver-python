@@ -183,6 +183,19 @@ __complete_grid = [
 ]
 complete_grid = add_commas_between(__complete_grid)
 
+__impossible_grid = [
+    ['530070000'],
+    ['600195000'],
+    ['098000060'],
+    ['800060003'],
+    ['400803001'],
+    ['700020006'],
+    ['060000280'],
+    ['000419305'],
+    ['000080079']
+]
+impossible_grid = add_commas_between(__impossible_grid)
+
 
 group_candidates = [
     [1,2,3,4],

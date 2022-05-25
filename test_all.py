@@ -79,12 +79,19 @@ class GridStatus(unittest.TestCase):
         self.assertFalse(is_complete(incomplete_grid))
         self.assertTrue(is_complete(complete_grid))
 
+    def test_in_impossible_state(self):
+        self.assertTrue(in_impossible_state(impossible_grid))
+
 
 class SolveGrid(unittest.TestCase):
     def test_grid_with_no_guessing(self):
         solved_grid = solve_grid(incomplete_grid)
         self.assertEqual(solved_grid['status'], 'complete')
-        self.assertEqual(solved_grid['grid'], complete_grid) 
+        self.assertEqual(solved_grid['grid'], complete_grid)
+
+    def test_impossible_grid(self):
+        solved_grid = solve_grid(impossible_grid)
+        self.assertEqual(solved_grid['status'], 'impossible')
 
 
 

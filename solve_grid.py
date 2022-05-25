@@ -3,17 +3,17 @@ from add_singles import add_singles
 from grid_status import *
  
 def solve_grid(grid):
-    editable_grid = deepcopy(grid)
+    # if illegal(grid): return {'status': 'illegal'}
 
+    editable_grid = deepcopy(grid)
     editable_grid = add_singles(grid)
 
     if is_complete(editable_grid): 
         return {'status': 'complete', 'grid': editable_grid}
+    if in_impossible_state(editable_grid): 
+        return {'status': 'impossible'}
 
 """
-    if grid_impossible(editable_grid): return ['status': 'impossible']
-
-
     # GUESSING STARTS
 
     least_candidate_cell = get_least_candidate_cell()
