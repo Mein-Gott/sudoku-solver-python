@@ -1,13 +1,16 @@
 from copy import deepcopy 
 from add_singles import add_singles
+from grid_status import *
  
 def solve_grid(grid):
     editable_grid = deepcopy(grid)
 
     editable_grid = add_singles(grid)
 
+    if is_complete(editable_grid): 
+        return {'status': 'complete', 'grid': editable_grid}
+
 """
-    if grid_complete(editable_grid): return ['status': 'complete', 'grid': editable_grid]
     if grid_impossible(editable_grid): return ['status': 'impossible']
 
 

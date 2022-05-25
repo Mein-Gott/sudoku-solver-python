@@ -1,5 +1,6 @@
 from typing import Counter
 import unittest
+from solve_grid import *
 from testing_data import *
 from split_into_groups import *
 from parse_to_list import *
@@ -77,6 +78,13 @@ class GridStatus(unittest.TestCase):
     def test_is_complete(self):
         self.assertFalse(is_complete(incomplete_grid))
         self.assertTrue(is_complete(complete_grid))
+
+
+class SolveGrid(unittest.TestCase):
+    def test_grid_with_no_guessing(self):
+        solved_grid = solve_grid(incomplete_grid)
+        self.assertEqual(solved_grid['status'], 'complete')
+        self.assertEqual(solved_grid['grid'], complete_grid) 
 
 
 
