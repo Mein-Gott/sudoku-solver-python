@@ -7,11 +7,6 @@ def solve_grid(grid):
     editable_grid = add_singles(grid)
 
 """
-    count num_of_singles
-    while num_of_singles > 0:
-        add singles to the editable_grid
-        count num_of_singles
-
     if grid_complete(editable_grid): return ['status': 'complete', 'grid': editable_grid]
     if grid_impossible(editable_grid): return ['status': 'impossible']
 
