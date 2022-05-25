@@ -1,4 +1,5 @@
 from candidates_per_cell import candidates_per_cell
+from split_into_groups import split_into_groups
 
 def is_complete(grid):
     for row in grid:
@@ -16,7 +17,23 @@ def in_impossible_state(grid):
                 return True
 
     return False
-    
 
 def illegal(grid):
-    pass
+    groupsets = split_into_groups(grid)
+
+    for groupset in groupsets:
+        for group in groupset:
+            if group_illegal(group): return True
+    
+    return False
+
+
+def group_illegal(group):
+    used_numbers = []
+    for cell in group:
+        if cell == 0: continue
+        if cell in used_numbers: return True
+
+        used_numbers.append(cell)
+        
+    return False

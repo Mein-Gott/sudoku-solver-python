@@ -1,5 +1,7 @@
+from copy import deepcopy
+
 def split_into_groups(grid):
-    rows = grid
+    rows = deepcopy(grid)
     columns = split_into_columns(rows)
     regions = split_into_regions(grid)
 

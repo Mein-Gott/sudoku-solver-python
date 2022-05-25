@@ -81,6 +81,18 @@ class GridStatus(unittest.TestCase):
 
     def test_in_impossible_state(self):
         self.assertTrue(in_impossible_state(impossible_grid))
+        self.assertFalse(in_impossible_state(incomplete_grid))
+
+    def test_group_illegal(self):
+        self.assertTrue(group_illegal(illegal_group))
+        self.assertFalse(group_illegal(legal_group))
+
+    def test_illegal(self):
+        self.assertTrue(illegal(illegal_grid_region))
+        self.assertTrue(illegal(illegal_grid_row))
+        self.assertTrue(illegal(illegal_grid_column))
+
+        self.assertFalse(illegal(incomplete_grid))
 
 
 class SolveGrid(unittest.TestCase):
@@ -92,6 +104,13 @@ class SolveGrid(unittest.TestCase):
     def test_impossible_grid(self):
         solved_grid = solve_grid(impossible_grid)
         self.assertEqual(solved_grid['status'], 'impossible')
+
+    def test_illegal_grid(self):
+        should_be_illegal = solve_grid(illegal_grid_region)
+        self.assertEqual(should_be_illegal['status'], 'illegal')
+
+        should_be_legal = solve_grid(incomplete_grid)
+        self.assertNotEqual(should_be_legal['status'], 'illegal')
 
 
 

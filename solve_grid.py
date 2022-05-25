@@ -3,7 +3,7 @@ from add_singles import add_singles
 from grid_status import *
  
 def solve_grid(grid):
-    # if illegal(grid): return {'status': 'illegal'}
+    if illegal(grid): return {'status': 'illegal'}
 
     editable_grid = deepcopy(grid)
     editable_grid = add_singles(grid)
