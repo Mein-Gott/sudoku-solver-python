@@ -1,5 +1,6 @@
 from copy import deepcopy 
 from add_singles import add_singles
+from candidates_per_cell import get_cell_with_least_candidates
 from grid_status import *
  
 def solve_grid(grid):
@@ -13,11 +14,11 @@ def solve_grid(grid):
     if in_impossible_state(editable_grid): 
         return {'status': 'impossible'}
 
-"""
+
     # GUESSING STARTS
 
-    least_candidate_cell = get_least_candidate_cell()
-    candidates = get_candidates(least_candidate_cell)
+    least_candidate_cell = get_cell_with_least_candidates(editable_grid)
+"""
 
     for candidate in candidates:
         add candidate to editable_grid

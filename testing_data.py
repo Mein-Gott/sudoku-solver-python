@@ -170,6 +170,8 @@ incomplete_grid_single_coords = [
     {'row': 7, 'column': 7, 'value': 3}
 ]
 
+correct_least_candidate_cell = {'row': 4, 'column': 4, 'candidates': [5]}
+
 __complete_grid = [
     ['534678912'],
     ['672195348'],
@@ -279,3 +281,17 @@ __illegal_grid_column = [
     ['000080079']
 ]
 illegal_grid_column = add_commas_between(__illegal_grid_column)
+
+
+__less_clues = [
+    ['030000000'],
+    ['000195000'],
+    ['008000060'],
+    ['800060000'],
+    ['400800001'],
+    ['000020000'],
+    ['060000280'],
+    ['000419005'],
+    ['000000070']
+]
+less_clues = add_commas_between(__less_clues)

@@ -13,3 +13,4 @@ It's important to know a few terms before diving into the code:
 My own meanings:  
 - `final grid` = the grid is either complete or classified as impossible, further solving isn't relevant
 - `groupset` = all the groups of a given group type, for example all rows or all regions
+- `illegal` = doesn't compy with the rules of sudoku 

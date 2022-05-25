@@ -56,6 +56,10 @@ class CandidatesPerCell(unittest.TestCase):
             for generated_cell_candidates, correct_cell_candidates in zip(generated_row_candidates, correct_row_candidates):
                 self.assertTrue(Counter(generated_cell_candidates) == Counter(correct_cell_candidates))
 
+    def test_cell_with_least_candidates(self):
+        generated_cell = get_cell_with_least_candidates(incomplete_grid)
+        self.assertEqual(generated_cell, correct_least_candidate_cell)
+
 
 class CoordinatesOfSingles(unittest.TestCase):
     def test_coordinates_of_singles(self):

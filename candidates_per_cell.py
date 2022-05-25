@@ -65,6 +65,26 @@ def eliminate_value_from_group_candidates(group_candidates, value):
 
 
 
+def get_cell_with_least_candidates(grid):
+    candidates = candidates_per_cell(grid)
+
+    current_minimum = 10
+    data = {}
+
+    for row_index, candidate_row in enumerate(candidates):
+        for column_index, cell_candidates in enumerate(candidate_row):
+            if len(cell_candidates) == 0: continue
+            if len(cell_candidates) < current_minimum:
+                current_minimum = len(cell_candidates)
+                data = {
+                    'row': row_index, 
+                    'column': column_index, 
+                    'candidates': cell_candidates
+                }
+
+    return data
+
+
 
 def __generate_default_candidates():
     default_candidates = []
