@@ -116,6 +116,11 @@ class SolveGrid(unittest.TestCase):
         should_be_legal = solve_grid(incomplete_grid)
         self.assertNotEqual(should_be_legal['status'], 'illegal')
 
+    def test_whole_algorithm(self):
+        solved_grid = solve_grid(less_clues)
+        self.assertEqual(solved_grid['status'], 'complete')
+        self.assertEqual(solved_grid['grid'], complete_grid)
+
 
 class GridValueEditing(unittest.TestCase):
     def test_add_value(self):

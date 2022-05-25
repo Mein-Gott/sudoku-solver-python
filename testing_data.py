@@ -170,7 +170,13 @@ incomplete_grid_single_coords = [
     {'row': 7, 'column': 7, 'value': 3}
 ]
 
-correct_least_candidate_cell = {'row': 4, 'column': 4, 'candidates': [5]}
+correct_least_candidate_cell = {
+    'coordinates': {
+        'row': 4, 
+        'column': 4, 
+    },
+    'candidates': [5]
+}
 
 __complete_grid = [
     ['534678912'],
