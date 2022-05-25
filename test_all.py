@@ -117,6 +117,18 @@ class SolveGrid(unittest.TestCase):
         self.assertNotEqual(should_be_legal['status'], 'illegal')
 
 
+class GridValueEditing(unittest.TestCase):
+    def test_add_value(self):
+        coords = {'row': 1, 'column': 6}
+        generated_grid = add_value(incomplete_grid, coords, 7)
+        self.assertEqual(generated_grid, seven_added_1_6)
+
+    def test_delete_value(self):
+        coords = {'row': 1, 'column': 6}
+        generated_grid = delete_value(seven_added_1_6, coords)
+        self.assertEqual(generated_grid, incomplete_grid)
+
+
 
 if __name__ == '__main__':
     unittest.main()

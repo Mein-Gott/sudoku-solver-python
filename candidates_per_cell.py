@@ -77,8 +77,10 @@ def get_cell_with_least_candidates(grid):
             if len(cell_candidates) < current_minimum:
                 current_minimum = len(cell_candidates)
                 data = {
-                    'row': row_index, 
-                    'column': column_index, 
+                    'coordinates': {
+                        'row': row_index, 
+                        'column': column_index, 
+                    },
                     'candidates': cell_candidates
                 }
 
