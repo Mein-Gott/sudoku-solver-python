@@ -107,14 +107,14 @@ class SolveGrid(unittest.TestCase):
 
     def test_impossible_grid(self):
         solved_grid = solve_grid(impossible_grid)
-        self.assertEqual(solved_grid['status'], 'impossible')
+        self.assertEqual(solved_grid['status'], 'not solvable')
 
     def test_illegal_grid(self):
         should_be_illegal = solve_grid(illegal_grid_region)
-        self.assertEqual(should_be_illegal['status'], 'illegal')
+        self.assertEqual(should_be_illegal['status'], 'not solvable')
 
         should_be_legal = solve_grid(incomplete_grid)
-        self.assertNotEqual(should_be_legal['status'], 'illegal')
+        self.assertNotEqual(should_be_legal['status'], 'not solvable')
 
     def test_whole_algorithm(self):
         solved_grid = solve_grid(less_clues)

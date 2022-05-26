@@ -7,16 +7,16 @@ from grid_value_editing import *
 def solve_grid(grid):
     editable_grid = deepcopy(grid)
 
-    if illegal(editable_grid): return {'status': 'illegal'}
+    if illegal(editable_grid): return {'status': 'not solvable'}
 
     editable_grid = add_singles(grid)
 
-    if illegal(editable_grid): return {'status': 'illegal'}
+    if illegal(editable_grid): return {'status': 'not solvable'}
 
     if is_complete(editable_grid): 
         return {'status': 'complete', 'grid': editable_grid}
     if in_impossible_state(editable_grid): 
-        return {'status': 'impossible'}
+        return {'status': 'not solvable'}
 
 
     # GUESSING STARTS
@@ -32,4 +32,4 @@ def solve_grid(grid):
 
         editable_grid = delete_value(editable_grid, least_candidate_cell['coordinates'])
 
-    return {'status': 'impossible'}
+    return {'status': 'not solvable'}

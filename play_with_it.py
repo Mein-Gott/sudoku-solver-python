@@ -1,23 +1,20 @@
 from solve_grid import solve_grid
-from parse_to_list import print_nicely
-from testing_data import less_clues, complete_grid
-from grid_status import illegal
+from parse_to_list import print_nicely, add_commas_between
 
-starting_grid = [
-    [2],
-    [3],
-    [4],
-    [5],
-    [6],
-    [7],
-    [8],
-    [9],
-    [1]
+__starting_grid = [
+    ['100000000'],
+    ['000000000'],
+    ['000000000'],
+    ['000304000'],
+    ['000000000'],
+    ['000000000'],
+    ['070000000'],
+    ['000000000'],
+    ['004060009']
 ]
+starting_grid = add_commas_between(__starting_grid)
 
-solved_grid = solve_grid(less_clues)
+solved_grid = solve_grid(starting_grid)
+
+print(solved_grid['status'])
 print_nicely(solved_grid['grid'])
-print('-------------')
-print_nicely(complete_grid)
-print('illegal:')
-print(illegal(solved_grid['grid']))
