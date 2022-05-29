@@ -9,8 +9,3 @@ def __separate_row(row):
     actual_string = row[0]
     for str_number in actual_string: separated_row.append(int(str_number))
     return separated_row
-
-
-def print_nicely(grid):
-    for row in grid:
-        print(row)
