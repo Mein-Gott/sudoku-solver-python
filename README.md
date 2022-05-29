@@ -1,6 +1,19 @@
 # sudoku-solver-python
+  
+A python program able solve standard (9x9) sudoku puzzles.
+
+## Installation
+Clone the repo to your computer.
+
+## Usage
+1. Open the `play_with_it.py` file
+2. Type your sudoku into the `starting_grid`
+    - Each sublist represents a row
+    - Zeros represent empty cells
+3. Then just run the `play_with_it.py` file. The final grid is printed after a while.
+
 ## Glossary
-It's important to know a few terms before diving into the code:
+Here are the key sudoku terms used in the code:
 - `cell` = the smallest square with the number
 - `region` = a 3x3 sub-grid
 - `clue` = an initially defined number
@@ -11,6 +24,6 @@ It's important to know a few terms before diving into the code:
 [Wikipedia Sudoku Glossary](https://en.wikipedia.org/wiki/Glossary_of_Sudoku)  
 
 My own meanings:  
-- `final grid` = the grid is either complete or classified as impossible, further solving isn't relevant
+- `final grid` = the grid is either complete or classified as impossible, further solving isn't possible
 - `groupset` = all the groups of a given group type, for example all rows or all regions
-- `illegal` = doesn't compy with the rules of sudoku 
+- `illegal` = doesn't comply with the rules of sudoku 
