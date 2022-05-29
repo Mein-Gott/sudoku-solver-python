@@ -31,23 +31,23 @@ class ParseToList(unittest.TestCase):
 
 class CandidatesPerCell(unittest.TestCase):
     def test_eliminate_value_from_group_candidates(self):
-        no_fours = eliminate_value_from_group_candidates(group_candidates, 4)
+        no_fours = delete_value_from_group_candidates(group_candidates, 4)
         self.assertEqual(no_fours, group_candidates_no_four)
 
     def test_eliminate_whole_group(self):
-        generated_candidates = eliminate_candidates_group(group_candidates, group_values)
+        generated_candidates = eliminate_group_candidates(group_candidates, group_values)
         self.assertEqual(generated_candidates, group_candidates_eliminated)
 
     def test_eliminate_groupset(self):
-        generated_candidates = eliminate_candidates_checking_groupset(groupset_candidates, groupset_clues)
+        generated_candidates = eliminate_groupset_candidates(groupset_candidates, groupset_clues)
         self.assertEqual(generated_candidates, eliminated_groupset_candidates)
 
     def test_delete_candidates_from_clue_cell_row(self):
-        generated_candidates = delete_candidates_from_clue_cell_row(groupset_candidates[0], groupset_clues[0])
+        generated_candidates = no_candidates_in_clue_cell_row(groupset_candidates[0], groupset_clues[0])
         self.assertEqual(generated_candidates, no_candidates_for_clue_cells[0])
 
     def test_delete_candidates_from_clue_cells(self):
-        generated_candidates = delete_candidates_from_clue_cells(groupset_candidates, groupset_clues)
+        generated_candidates = no_candidates_in_clue_cells(groupset_candidates, groupset_clues)
         self.assertEqual(generated_candidates, no_candidates_for_clue_cells)
 
     def test_candidates_per_cell(self):
